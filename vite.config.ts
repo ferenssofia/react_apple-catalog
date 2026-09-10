@@ -7,8 +7,16 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: {
+      'styles': path.resolve(__dirname, './src/styles'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@': path.resolve(__dirname, './src'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        includePaths: [path.resolve(__dirname, './src')],
+      },
     },
   },
 })
