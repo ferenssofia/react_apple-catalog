@@ -5,6 +5,7 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node"]
+    "ignoreDeprecations": "5.0",
+    "types": ["node", "react", "react-dom"]
   }
 }
