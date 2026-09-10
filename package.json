@@ -39,17 +39,15 @@
     "vite": "^5.3.1"
   },
   "scripts": {
-    "start": "mate-scripts start -l",
-    "build": "mate-scripts build",
+    "start": "vite",
+    "build": "vite build",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
-    "lint-js": "mate-scripts lint -j",
-    "lint-css": "mate-scripts lint -s",
+    "lint-js": "eslint src --ext .ts,.tsx",
+    "lint-css": "stylelint 'src/**/*.scss'",
     "format": "prettier --write './src/**/*.{ts,tsx}'",
     "lint": "npm run style-format && npm run format && npm run lint-js && npm run lint-css",
-    "update": "mate-scripts update",
-    "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [
