@@ -6,9 +6,14 @@ import styles from './ProductsSlider.module.scss';
 interface Props {
   title: string;
   products: Product[];
+  hasDiscount?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  hasDiscount = true, 
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -50,7 +55,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       <div className={styles.slider__content} ref={containerRef}>
         {products.map(product => (
           <div key={product.id} className={styles.slider__item}>
-            <ProductCard product={product} />
+            {/* 2. Передаємо hasDiscount у ProductCard */}
+            <ProductCard product={product} hasDiscount={hasDiscount} />
           </div>
         ))}
       </div>

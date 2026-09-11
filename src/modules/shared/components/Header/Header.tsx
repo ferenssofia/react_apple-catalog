@@ -97,7 +97,7 @@ export const Header = () => {
             aria-label="Toggle menu"
           >
             <img
-              src={isMenuOpen ? '/img/icons/Close.svg' : '/img/icons/Menu.svg'}
+              src={isMenuOpen ? 'img/icons/Close.svg' : 'img/icons/Menu.svg'}
               alt="Menu"
               className={styles.header__icon}
             />

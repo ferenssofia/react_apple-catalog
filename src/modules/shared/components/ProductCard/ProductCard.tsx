@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import { useCart } from '../../../../context/CartContext';
 import { useFavorites } from '../../../../context/FavoritesContext';
-import { getAssetUrl } from '../../../../utils/getAssetUrl'; // Перевірте правильність відносного шляху
+import { getAssetUrl } from '../../../../utils/getAssetUrl';
 import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  hasDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  hasDiscount = true,
+}) => {
   const { cart, addToCart, removeFromCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
@@ -24,6 +28,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       addToCart(product);
     }
   };
+
+  const currentPrice = hasDiscount ? product.price : product.fullPrice;
+  const showOldPrice = hasDiscount && product.fullPrice > product.price;
 
   return (
     <div className={styles.card}>
@@ -43,8 +50,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.card__prices}>
-        <span className={styles.card__price}>${product.price}</span>
-        {product.fullPrice > product.price && (
+        <span className={styles.card__price}>${currentPrice}</span>
+        {showOldPrice && (
           <span className={styles.card__priceRegular}>
             ${product.fullPrice}
           </span>

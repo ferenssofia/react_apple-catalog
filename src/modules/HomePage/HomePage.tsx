@@ -39,9 +39,11 @@ export const HomePage: React.FC = () => {
         <Loader />
       ) : (
         <>
+          {/* Передаємо hasDiscount={false} тільки для нових моделей */}
           <ProductsSlider
             title="Brand new models"
             products={brandNewProducts}
+            hasDiscount={false}
           />
           <ShopByCategory products={products} />
           <ProductsSlider title="Hot prices" products={hotPricesProducts} />
