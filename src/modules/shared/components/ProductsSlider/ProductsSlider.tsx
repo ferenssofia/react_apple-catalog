@@ -12,7 +12,7 @@ interface Props {
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
-  hasDiscount = true, 
+  hasDiscount = true,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
